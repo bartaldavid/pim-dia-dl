@@ -40,17 +40,6 @@ func getChunk(path string, cookie *http.Cookie) (string, string, error) {
 		return "", "", err
 	}
 
-	// body, err := io.ReadAll(resp.Body)
-	// if err != nil {
-	// 	fmt.Println("Error reading response body:", err)
-	// 	return "", err
-	// }
-
-	if err != nil {
-		fmt.Println("Error getting HTML body:", err)
-		return "", "", err
-	}
-
 	doc, err := goquery.NewDocumentFromReader(resp.Body)
 
 	if err != nil {
