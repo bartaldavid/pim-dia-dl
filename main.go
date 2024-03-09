@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"os"
 	"strings"
 
 	diaEpub "github.com/bartaldavid/pim-dia-dl/pkg/dia-epub"
@@ -29,5 +30,11 @@ func main() {
 
 	})
 
-	http.ListenAndServe(":8080", mux)
+	port := os.Getenv("PORT")
+
+	if port == "" {
+		port = "8080"
+	}
+
+	http.ListenAndServe(port, mux)
 }
