@@ -2,25 +2,42 @@ package diaEpub
 
 import (
 	"fmt"
-	"io"
 	"net/http"
+	"strings"
 
 	"github.com/go-shiori/go-epub"
 )
 
 const rootUrl = "https://reader.dia.hu"
 
-func UrlToEpub(url string, dest io.Writer) error {
+type EpubResult struct {
+	Epub     *epub.Epub
+	FileName string
+}
+
+func UrlToEpub(url string) (EpubResult, error) {
 	// urlParts := strings.Split(url, "/")
 
 	resp, err := http.Get(url)
 
 	if err != nil {
 		fmt.Println("Error fetching URL:", err)
-		return nil
+		return EpubResult{}, err
+	}
+
+	if resp.StatusCode != http.StatusOK {
+		fmt.Println("Error fetching URL:", resp.Status)
+		return EpubResult{}, fmt.Errorf("error fetching URL (%s): %s", url, resp.Status)
 	}
 
 	token := resp.Request.URL.Query().Get("token")
+
+	if token == "" {
+		fmt.Println("No token found")
+		return EpubResult{}, fmt.Errorf("no token found")
+	}
+
+	urlParts := strings.Split(url, "/")
 
 	defer resp.Body.Close()
 
@@ -30,14 +47,14 @@ func UrlToEpub(url string, dest io.Writer) error {
 
 	if err != nil {
 		fmt.Println("Error getting init settings:", err)
-		return err
+		return EpubResult{}, err
 	}
 
 	e, err := epub.NewEpub(initSettings.MetaData.Title)
 
 	if err != nil {
 		fmt.Println("Error creating new EPUB:", err)
-		return err
+		return EpubResult{}, err
 	}
 
 	e.SetAuthor(initSettings.MetaData.Author)
@@ -47,19 +64,19 @@ func UrlToEpub(url string, dest io.Writer) error {
 
 	if err != nil {
 		fmt.Println("Error adding CSS:", err)
-		return err
+		return EpubResult{}, err
 	}
 
 	for _, component := range initSettings.View.Components {
 		chunk, chunkTitle, err := getChunk(component, &cookie)
 		if err != nil {
 			fmt.Println("Error getting chunk:", err)
-			return err
+			return EpubResult{}, err
 		}
 		_, err = e.AddSection(chunk, chunkTitle, "", cssPath)
 		if err != nil {
 			fmt.Println("Error adding section:", err)
-			return err
+			return EpubResult{}, err
 		}
 	}
 
@@ -74,12 +91,7 @@ func UrlToEpub(url string, dest io.Writer) error {
 
 	// err = e.Write("temp/" + urlParts[len(urlParts)-1] + ".epub")
 
-	_, err = e.WriteTo(dest)
+	filename := urlParts[len(urlParts)-1] + ".epub"
 
-	if err != nil {
-		fmt.Println("Error writing EPUB:", err)
-		return err
-	}
-
-	return nil
+	return EpubResult{Epub: e, FileName: filename}, nil
 }

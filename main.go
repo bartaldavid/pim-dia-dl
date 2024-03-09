@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"net/url"
 	"os"
-	"strings"
 
 	diaEpub "github.com/bartaldavid/pim-dia-dl/pkg/dia-epub"
 )
@@ -17,21 +17,44 @@ func main() {
 	})
 
 	mux.HandleFunc("/epub", func(w http.ResponseWriter, r *http.Request) {
-		url := r.URL.Query().Get("url")
-		urlParts := strings.Split(url, "/")
+		urlQuery := r.URL.Query().Get("url")
 
-		if url == "" {
+		if urlQuery == "" {
 			http.Redirect(w, r, "/", http.StatusSeeOther)
 		}
 
-		w.Header().Set("Content-Disposition", fmt.Sprintf(`attachment; filename="%s"`, urlParts[len(urlParts)-1]+".epub"))
-
-		err := diaEpub.UrlToEpub(url, w)
+		url, err := url.Parse(urlQuery)
 
 		if err != nil {
-			http.Error(w, "Error creating EPUB", http.StatusInternalServerError)
+			http.Error(w, fmt.Sprintf("Malformed URL: %s", urlQuery), http.StatusBadRequest)
+			return
 		}
 
+		url.Scheme = "https"
+
+		if url.Hostname() != "reader.dia.hu" {
+			http.Error(w, fmt.Sprintf("Invalid URL: %s", urlQuery), http.StatusBadRequest)
+			return
+		}
+
+		epub, err := diaEpub.UrlToEpub(urlQuery)
+
+		if err != nil {
+			http.Error(w, "Error creating EPUB - "+err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		w.Header().Set("Content-Type", "application/epub+zip")
+		w.Header().Set("Content-Disposition", fmt.Sprintf(`attachment; filename="%s"`, epub.FileName))
+
+		_, err = epub.Epub.WriteTo(w)
+
+		if err != nil {
+			http.Error(w, "Error writing EPUB", http.StatusInternalServerError)
+			return
+		}
+
+		fmt.Print(epub.FileName)
 	})
 
 	port := os.Getenv("PORT")
