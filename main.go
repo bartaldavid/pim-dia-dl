@@ -36,5 +36,5 @@ func main() {
 		port = "8080"
 	}
 
-	http.ListenAndServe("0.0.0.0:"+port, mux)
+	http.ListenAndServe(":"+port, mux)
 }
