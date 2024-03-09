@@ -4,12 +4,64 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PIM DIA letöltő</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+          "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      }
+      label[for="url"] {
+        display: block;
+      }
+      input {
+        border: 1px solid #ccc;
+        border-radius: 0.25rem;
+        padding: 0.5rem;
+        width: 100%;
+        margin: 0.5rem 0;
+      }
+      small {
+        display: block;
+      }
+      button {
+        margin-top: 1rem;
+      }
+      code {
+        background-color: #f3f4f6;
+        padding: 0.25rem;
+        border-radius: 0.25rem;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+      }
+      a {
+        text-decoration: none;
+      }
+    </style>
   </head>
   <body>
-    <h1>PIM DIA letöltő</h1>
+    <h1>PIM DIA epub letöltő</h1>
     <form action="/epub" method="get">
-      <input type="url" name="url" id="url" />
-      <button type="submit">Letöltés</button>
+      <label for="url">A könyv linkje:</label>
+      <input
+        type="url"
+        name="url"
+        id="url"
+        placeholder="https://reader.dia.hu/document/Bodor_Adam-Sinistra_korzet-483"
+        aria-describedby="description"
+      />
+      <small id="description">
+        Csak a modern DIA
+        <code>https://reader.dia.hu/...</code> kezdetű linkjei működnek,
+        például:
+        <a
+          href="epub?url=https%3A%2F%2Freader.dia.hu%2Fdocument%2FBodor_Adam-Sinistra_korzet-483"
+          >https://reader.dia.hu/document/Bodor_Adam-Sinistra_korzet-483</a
+        >
+      </small>
+      <div>
+        <button type="submit">Letöltés</button>
+        <a href="https://opac.dia.hu/">Keresés a DIA katalógusában</a>
+      </div>
     </form>
   </body>
 </html>
