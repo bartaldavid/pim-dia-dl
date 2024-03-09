@@ -1,0 +1,1856 @@
+@charset "UTF-8";
+@namespace "http://www.w3.org/1999/xhtml";
+div.szereplolista {
+  display: table;
+}
+div.szereplo {
+  display: table-row;
+}
+div.nev,
+div.szerep {
+  display: table-cell;
+}
+div.csoport-nev {
+  position: relative;
+  left: 100%;
+  bottom: 2em;
+}
+img {
+  display: block;
+}
+img.inline {
+  display: inline;
+}
+div.kepszoveg div.ajanlas,
+div.kepszoveg div.alcim,
+div.kepszoveg div.cim,
+div.kepszoveg div.keltezes,
+div.kepszoveg div.motto,
+div.kepszoveg div.sor,
+div.kepszoveg p {
+  display: none;
+}
+.keretezett {
+  border: solid thin #000;
+  padding: 0.25em;
+}
+ol ol {
+  list-style-type: lower-alpha;
+}
+div.szerzoseg {
+  text-align: center;
+}
+p.behuzas0 {
+  text-indent: 0;
+}
+div.versszak {
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+.szerzoi-utasitas {
+  font-style: italic;
+}
+.szerzoi-utasitas em {
+  font-style: normal;
+}
+.szeparator:after {
+  content: "*";
+}
+.szeparator {
+  text-align: center;
+  margin-top: 0.75em;
+}
+.versszak + .szeparator {
+  text-align: left;
+  padding-left: 18%;
+}
+table div.szeparator {
+  text-align: left;
+  position: relative;
+  left: 20em;
+}
+.pontozott {
+  display: block;
+  border-bottom: 2px dotted #000;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.labjegyzet,
+.szeljegyzet,
+.szeljegyzet-bal,
+.szeljegyzet-jobb,
+.vegjegyzet {
+  display: block;
+}
+.parhuzamos-bekezdes,
+.parhuzamos-bekezdes-bal,
+.parhuzamos-bekezdes-jobb,
+.parhuzamosbekezdes {
+  display: block;
+}
+div.kethasabos {
+  display: table;
+  width: 100%;
+}
+div.hasab1,
+div.hasab2 {
+  display: table-cell;
+  width: 50%;
+  padding: 1%;
+}
+div.hasab2 span.oldaltores {
+  display: none;
+}
+div.behuzas_fuggo > p,
+p.behuzas_fuggo {
+  margin-left: 2em;
+  text-indent: -2em;
+}
+div.behuzas_lepcsos > div.sor,
+div.sor.behuzas_lepcsos {
+  padding-left: 30%;
+}
+div.behuzas_lepcsos > p,
+p.behuzas_lepcsos {
+  text-indent: 30%;
+}
+.kozepre {
+  text-align: center;
+}
+img.kozepre,
+table.kozepre {
+  margin-left: auto;
+  margin-right: auto;
+}
+.jobbra {
+  text-align: right;
+}
+span.ritkitott {
+  letter-spacing: 0.5em;
+  padding-left: 0.35em;
+  padding-right: 0.35em;
+}
+span.alahuzott {
+  text-decoration: underline;
+}
+span.alahuzott_dupla {
+  text-decoration: underline;
+  text-underline-style: double;
+}
+span.athuzott {
+  text-decoration: line-through;
+}
+.rejtett {
+  visibility: hidden;
+}
+span.behuzas1 {
+  padding-left: 8px;
+}
+span.behuzas2 {
+  padding-left: 16px;
+}
+span.behuzas3 {
+  padding-left: 24px;
+}
+span.behuzas4 {
+  padding-left: 32px;
+}
+span.behuzas5 {
+  padding-left: 40px;
+}
+span.behuzas6 {
+  padding-left: 48px;
+}
+span.behuzas7 {
+  padding-left: 56px;
+}
+span.behuzas8 {
+  padding-left: 64px;
+}
+span.behuzas9 {
+  padding-left: 72px;
+}
+span.behuzas10 {
+  padding-left: 80px;
+}
+span.behuzas11 {
+  padding-left: 88px;
+}
+span.behuzas12 {
+  padding-left: 96px;
+}
+span.behuzas13 {
+  padding-left: 104px;
+}
+span.behuzas14 {
+  padding-left: 112px;
+}
+span.behuzas15 {
+  padding-left: 120px;
+}
+span.behuzas16 {
+  padding-left: 128px;
+}
+span.behuzas17 {
+  padding-left: 136px;
+}
+span.behuzas18 {
+  padding-left: 144px;
+}
+span.behuzas19 {
+  padding-left: 152px;
+}
+span.behuzas20 {
+  padding-left: 160px;
+}
+span.behuzas21 {
+  padding-left: 168px;
+}
+span.behuzas22 {
+  padding-left: 176px;
+}
+span.behuzas23 {
+  padding-left: 184px;
+}
+span.behuzas24 {
+  padding-left: 192px;
+}
+span.behuzas25 {
+  padding-left: 200px;
+}
+span.behuzas26 {
+  padding-left: 208px;
+}
+span.behuzas27 {
+  padding-left: 216px;
+}
+span.behuzas28 {
+  padding-left: 224px;
+}
+span.behuzas29 {
+  padding-left: 232px;
+}
+span.behuzas30 {
+  padding-left: 240px;
+}
+span.behuzas31 {
+  padding-left: 248px;
+}
+span.behuzas32 {
+  padding-left: 256px;
+}
+span.behuzas33 {
+  padding-left: 264px;
+}
+span.behuzas34 {
+  padding-left: 272px;
+}
+span.behuzas35 {
+  padding-left: 280px;
+}
+span.behuzas36 {
+  padding-left: 288px;
+}
+span.behuzas37 {
+  padding-left: 296px;
+}
+span.behuzas38 {
+  padding-left: 304px;
+}
+span.behuzas39 {
+  padding-left: 312px;
+}
+span.behuzas40 {
+  padding-left: 320px;
+}
+span.behuzas41 {
+  padding-left: 328px;
+}
+span.behuzas42 {
+  padding-left: 336px;
+}
+span.behuzas43 {
+  padding-left: 344px;
+}
+span.behuzas44 {
+  padding-left: 352px;
+}
+span.behuzas45 {
+  padding-left: 360px;
+}
+span.behuzas46 {
+  padding-left: 368px;
+}
+span.behuzas47 {
+  padding-left: 376px;
+}
+span.behuzas48 {
+  padding-left: 384px;
+}
+span.behuzas49 {
+  padding-left: 392px;
+}
+span.behuzas50 {
+  padding-left: 400px;
+}
+p.behuzas1 {
+  text-indent: 8px;
+}
+p.behuzas2 {
+  text-indent: 16px;
+}
+p.behuzas3 {
+  text-indent: 24px;
+}
+p.behuzas4 {
+  text-indent: 32px;
+}
+p.behuzas5 {
+  text-indent: 40px;
+}
+p.behuzas6 {
+  text-indent: 48px;
+}
+p.behuzas7 {
+  text-indent: 56px;
+}
+p.behuzas8 {
+  text-indent: 64px;
+}
+p.behuzas9 {
+  text-indent: 72px;
+}
+p.behuzas10 {
+  text-indent: 80px;
+}
+p.behuzas11 {
+  text-indent: 88px;
+}
+p.behuzas12 {
+  text-indent: 96px;
+}
+p.behuzas13 {
+  text-indent: 104px;
+}
+p.behuzas14 {
+  text-indent: 112px;
+}
+p.behuzas15 {
+  text-indent: 120px;
+}
+p.behuzas16 {
+  text-indent: 128px;
+}
+p.behuzas17 {
+  text-indent: 136px;
+}
+p.behuzas18 {
+  text-indent: 144px;
+}
+p.behuzas19 {
+  text-indent: 152px;
+}
+p.behuzas20 {
+  text-indent: 160px;
+}
+p.behuzas21 {
+  text-indent: 168px;
+}
+p.behuzas22 {
+  text-indent: 176px;
+}
+p.behuzas23 {
+  text-indent: 184px;
+}
+p.behuzas24 {
+  text-indent: 192px;
+}
+p.behuzas25 {
+  text-indent: 200px;
+}
+p.behuzas26 {
+  text-indent: 208px;
+}
+p.behuzas27 {
+  text-indent: 216px;
+}
+p.behuzas28 {
+  text-indent: 224px;
+}
+p.behuzas29 {
+  text-indent: 232px;
+}
+p.behuzas30 {
+  text-indent: 240px;
+}
+p.behuzas31 {
+  text-indent: 248px;
+}
+p.behuzas32 {
+  text-indent: 256px;
+}
+p.behuzas33 {
+  text-indent: 264px;
+}
+p.behuzas34 {
+  text-indent: 272px;
+}
+p.behuzas35 {
+  text-indent: 280px;
+}
+p.behuzas36 {
+  text-indent: 288px;
+}
+p.behuzas37 {
+  text-indent: 296px;
+}
+p.behuzas38 {
+  text-indent: 304px;
+}
+p.behuzas39 {
+  text-indent: 312px;
+}
+p.behuzas40 {
+  text-indent: 320px;
+}
+p.behuzas41 {
+  text-indent: 328px;
+}
+p.behuzas42 {
+  text-indent: 336px;
+}
+p.behuzas43 {
+  text-indent: 344px;
+}
+p.behuzas44 {
+  text-indent: 352px;
+}
+p.behuzas45 {
+  text-indent: 360px;
+}
+p.behuzas46 {
+  text-indent: 368px;
+}
+p.behuzas47 {
+  text-indent: 376px;
+}
+p.behuzas48 {
+  text-indent: 384px;
+}
+p.behuzas49 {
+  text-indent: 392px;
+}
+p.behuzas50 {
+  text-indent: 400px;
+}
+p.behuzas51 {
+  text-indent: 408px;
+}
+p.behuzas52 {
+  text-indent: 416px;
+}
+p.behuzas53 {
+  text-indent: 424px;
+}
+p.behuzas54 {
+  text-indent: 432px;
+}
+p.behuzas55 {
+  text-indent: 440px;
+}
+p.behuzas56 {
+  text-indent: 448px;
+}
+p.behuzas57 {
+  text-indent: 456px;
+}
+p.behuzas58 {
+  text-indent: 464px;
+}
+p.behuzas59 {
+  text-indent: 472px;
+}
+p.behuzas60 {
+  text-indent: 480px;
+}
+p.behuzas61 {
+  text-indent: 488px;
+}
+p.behuzas62 {
+  text-indent: 496px;
+}
+p.behuzas63 {
+  text-indent: 504px;
+}
+p.behuzas64 {
+  text-indent: 512px;
+}
+p.behuzas65 {
+  text-indent: 520px;
+}
+p.behuzas66 {
+  text-indent: 528px;
+}
+p.behuzas67 {
+  text-indent: 536px;
+}
+p.behuzas68 {
+  text-indent: 544px;
+}
+p.behuzas69 {
+  text-indent: 552px;
+}
+p.behuzas70 {
+  text-indent: 560px;
+}
+p.behuzas71 {
+  text-indent: 568px;
+}
+p.behuzas72 {
+  text-indent: 576px;
+}
+p.behuzas73 {
+  text-indent: 584px;
+}
+p.behuzas74 {
+  text-indent: 592px;
+}
+p.behuzas75 {
+  text-indent: 600px;
+}
+p.behuzas76 {
+  text-indent: 608px;
+}
+p.behuzas77 {
+  text-indent: 616px;
+}
+p.behuzas78 {
+  text-indent: 624px;
+}
+p.behuzas79 {
+  text-indent: 632px;
+}
+p.behuzas80 {
+  text-indent: 640px;
+}
+p.behuzas81 {
+  text-indent: 648px;
+}
+p.behuzas82 {
+  text-indent: 656px;
+}
+p.behuzas83 {
+  text-indent: 664px;
+}
+p.behuzas84 {
+  text-indent: 672px;
+}
+p.behuzas85 {
+  text-indent: 680px;
+}
+p.behuzas86 {
+  text-indent: 688px;
+}
+p.behuzas87 {
+  text-indent: 696px;
+}
+p.behuzas88 {
+  text-indent: 704px;
+}
+p.behuzas89 {
+  text-indent: 712px;
+}
+p.behuzas90 {
+  text-indent: 720px;
+}
+p.behuzas91 {
+  text-indent: 728px;
+}
+p.behuzas92 {
+  text-indent: 736px;
+}
+p.behuzas93 {
+  text-indent: 744px;
+}
+p.behuzas94 {
+  text-indent: 752px;
+}
+p.behuzas95 {
+  text-indent: 760px;
+}
+p.behuzas96 {
+  text-indent: 768px;
+}
+p.behuzas97 {
+  text-indent: 776px;
+}
+p.behuzas98 {
+  text-indent: 784px;
+}
+p.behuzas99 {
+  text-indent: 792px;
+}
+p.behuzas100 {
+  text-indent: 800px;
+}
+.balmargo1 {
+  margin-left: 8px;
+}
+.balmargo2 {
+  margin-left: 16px;
+}
+.balmargo3 {
+  margin-left: 24px;
+}
+.balmargo4 {
+  margin-left: 32px;
+}
+.balmargo5 {
+  margin-left: 40px;
+}
+.balmargo6 {
+  margin-left: 48px;
+}
+.balmargo7 {
+  margin-left: 56px;
+}
+.balmargo8 {
+  margin-left: 64px;
+}
+.balmargo9 {
+  margin-left: 72px;
+}
+.balmargo10 {
+  margin-left: 80px;
+}
+.balmargo11 {
+  margin-left: 88px;
+}
+.balmargo12 {
+  margin-left: 96px;
+}
+.balmargo13 {
+  margin-left: 104px;
+}
+.balmargo14 {
+  margin-left: 112px;
+}
+.balmargo15 {
+  margin-left: 120px;
+}
+.balmargo16 {
+  margin-left: 128px;
+}
+.balmargo17 {
+  margin-left: 136px;
+}
+.balmargo18 {
+  margin-left: 144px;
+}
+.balmargo19 {
+  margin-left: 152px;
+}
+.balmargo20 {
+  margin-left: 160px;
+}
+.balmargo21 {
+  margin-left: 168px;
+}
+.balmargo22 {
+  margin-left: 176px;
+}
+.balmargo23 {
+  margin-left: 184px;
+}
+.balmargo24 {
+  margin-left: 192px;
+}
+.balmargo25 {
+  margin-left: 200px;
+}
+.balmargo26 {
+  margin-left: 208px;
+}
+.balmargo27 {
+  margin-left: 216px;
+}
+.balmargo28 {
+  margin-left: 224px;
+}
+.balmargo29 {
+  margin-left: 232px;
+}
+.balmargo30 {
+  margin-left: 240px;
+}
+.balmargo31 {
+  margin-left: 248px;
+}
+.balmargo32 {
+  margin-left: 256px;
+}
+.balmargo33 {
+  margin-left: 264px;
+}
+.balmargo34 {
+  margin-left: 272px;
+}
+.balmargo35 {
+  margin-left: 280px;
+}
+.balmargo36 {
+  margin-left: 288px;
+}
+.balmargo37 {
+  margin-left: 296px;
+}
+.balmargo38 {
+  margin-left: 304px;
+}
+.balmargo39 {
+  margin-left: 312px;
+}
+.balmargo40 {
+  margin-left: 320px;
+}
+.balmargo41 {
+  margin-left: 328px;
+}
+.balmargo42 {
+  margin-left: 336px;
+}
+.balmargo43 {
+  margin-left: 344px;
+}
+.balmargo44 {
+  margin-left: 352px;
+}
+.balmargo45 {
+  margin-left: 360px;
+}
+.balmargo46 {
+  margin-left: 368px;
+}
+.balmargo47 {
+  margin-left: 376px;
+}
+.balmargo48 {
+  margin-left: 384px;
+}
+.balmargo49 {
+  margin-left: 392px;
+}
+.balmargo50 {
+  margin-left: 400px;
+}
+.jobbmargo1 {
+  margin-right: 8px;
+}
+.jobbmargo2 {
+  margin-right: 16px;
+}
+.jobbmargo3 {
+  margin-right: 24px;
+}
+.jobbmargo4 {
+  margin-right: 32px;
+}
+.jobbmargo5 {
+  margin-right: 40px;
+}
+.jobbmargo6 {
+  margin-right: 48px;
+}
+.jobbmargo7 {
+  margin-right: 56px;
+}
+.jobbmargo8 {
+  margin-right: 64px;
+}
+.jobbmargo9 {
+  margin-right: 72px;
+}
+.jobbmargo10 {
+  margin-right: 80px;
+}
+.jobbmargo11 {
+  margin-right: 88px;
+}
+.jobbmargo12 {
+  margin-right: 96px;
+}
+.jobbmargo13 {
+  margin-right: 104px;
+}
+.jobbmargo14 {
+  margin-right: 112px;
+}
+.jobbmargo15 {
+  margin-right: 120px;
+}
+.jobbmargo16 {
+  margin-right: 128px;
+}
+.jobbmargo17 {
+  margin-right: 136px;
+}
+.jobbmargo18 {
+  margin-right: 144px;
+}
+.jobbmargo19 {
+  margin-right: 152px;
+}
+.jobbmargo20 {
+  margin-right: 160px;
+}
+.jobbmargo21 {
+  margin-right: 168px;
+}
+.jobbmargo22 {
+  margin-right: 176px;
+}
+.jobbmargo23 {
+  margin-right: 184px;
+}
+.jobbmargo24 {
+  margin-right: 192px;
+}
+.jobbmargo25 {
+  margin-right: 200px;
+}
+.jobbmargo26 {
+  margin-right: 208px;
+}
+.jobbmargo27 {
+  margin-right: 216px;
+}
+.jobbmargo28 {
+  margin-right: 224px;
+}
+.jobbmargo29 {
+  margin-right: 232px;
+}
+.jobbmargo30 {
+  margin-right: 240px;
+}
+.jobbmargo31 {
+  margin-right: 248px;
+}
+.jobbmargo32 {
+  margin-right: 256px;
+}
+.jobbmargo33 {
+  margin-right: 264px;
+}
+.jobbmargo34 {
+  margin-right: 272px;
+}
+.jobbmargo35 {
+  margin-right: 280px;
+}
+.jobbmargo36 {
+  margin-right: 288px;
+}
+.jobbmargo37 {
+  margin-right: 296px;
+}
+.jobbmargo38 {
+  margin-right: 304px;
+}
+.jobbmargo39 {
+  margin-right: 312px;
+}
+.jobbmargo40 {
+  margin-right: 320px;
+}
+.jobbmargo41 {
+  margin-right: 328px;
+}
+.jobbmargo42 {
+  margin-right: 336px;
+}
+.jobbmargo43 {
+  margin-right: 344px;
+}
+.jobbmargo44 {
+  margin-right: 352px;
+}
+.jobbmargo45 {
+  margin-right: 360px;
+}
+.jobbmargo46 {
+  margin-right: 368px;
+}
+.jobbmargo47 {
+  margin-right: 376px;
+}
+.jobbmargo48 {
+  margin-right: 384px;
+}
+.jobbmargo49 {
+  margin-right: 392px;
+}
+.jobbmargo50 {
+  margin-right: 400px;
+}
+div.sor.behuzas1 {
+  padding-left: 8px;
+}
+div.sor.behuzas2 {
+  padding-left: 16px;
+}
+div.sor.behuzas3 {
+  padding-left: 24px;
+}
+div.sor.behuzas4 {
+  padding-left: 32px;
+}
+div.sor.behuzas5 {
+  padding-left: 40px;
+}
+div.sor.behuzas6 {
+  padding-left: 48px;
+}
+div.sor.behuzas7 {
+  padding-left: 56px;
+}
+div.sor.behuzas8 {
+  padding-left: 64px;
+}
+div.sor.behuzas9 {
+  padding-left: 72px;
+}
+div.sor.behuzas10 {
+  padding-left: 80px;
+}
+div.sor.behuzas11 {
+  padding-left: 88px;
+}
+div.sor.behuzas12 {
+  padding-left: 96px;
+}
+div.sor.behuzas13 {
+  padding-left: 104px;
+}
+div.sor.behuzas14 {
+  padding-left: 112px;
+}
+div.sor.behuzas15 {
+  padding-left: 120px;
+}
+div.sor.behuzas16 {
+  padding-left: 128px;
+}
+div.sor.behuzas17 {
+  padding-left: 136px;
+}
+div.sor.behuzas18 {
+  padding-left: 144px;
+}
+div.sor.behuzas19 {
+  padding-left: 152px;
+}
+div.sor.behuzas20 {
+  padding-left: 160px;
+}
+div.sor.behuzas21 {
+  padding-left: 168px;
+}
+div.sor.behuzas22 {
+  padding-left: 176px;
+}
+div.sor.behuzas23 {
+  padding-left: 184px;
+}
+div.sor.behuzas24 {
+  padding-left: 192px;
+}
+div.sor.behuzas25 {
+  padding-left: 200px;
+}
+div.sor.behuzas26 {
+  padding-left: 208px;
+}
+div.sor.behuzas27 {
+  padding-left: 216px;
+}
+div.sor.behuzas28 {
+  padding-left: 224px;
+}
+div.sor.behuzas29 {
+  padding-left: 232px;
+}
+div.sor.behuzas30 {
+  padding-left: 240px;
+}
+div.sor.behuzas31 {
+  padding-left: 248px;
+}
+div.sor.behuzas32 {
+  padding-left: 256px;
+}
+div.sor.behuzas33 {
+  padding-left: 264px;
+}
+div.sor.behuzas34 {
+  padding-left: 272px;
+}
+div.sor.behuzas35 {
+  padding-left: 280px;
+}
+div.sor.behuzas36 {
+  padding-left: 288px;
+}
+div.sor.behuzas37 {
+  padding-left: 296px;
+}
+div.sor.behuzas38 {
+  padding-left: 304px;
+}
+div.sor.behuzas39 {
+  padding-left: 312px;
+}
+div.sor.behuzas40 {
+  padding-left: 320px;
+}
+div.sor.behuzas41 {
+  padding-left: 328px;
+}
+div.sor.behuzas42 {
+  padding-left: 336px;
+}
+div.sor.behuzas43 {
+  padding-left: 344px;
+}
+div.sor.behuzas44 {
+  padding-left: 352px;
+}
+div.sor.behuzas45 {
+  padding-left: 360px;
+}
+div.sor.behuzas46 {
+  padding-left: 368px;
+}
+div.sor.behuzas47 {
+  padding-left: 376px;
+}
+div.sor.behuzas48 {
+  padding-left: 384px;
+}
+div.sor.behuzas49 {
+  padding-left: 392px;
+}
+div.sor.behuzas50 {
+  padding-left: 400px;
+}
+div.sor.behuzas51 {
+  padding-left: 408px;
+}
+div.sor.behuzas52 {
+  padding-left: 416px;
+}
+div.sor.behuzas53 {
+  padding-left: 424px;
+}
+div.sor.behuzas54 {
+  padding-left: 432px;
+}
+div.sor.behuzas55 {
+  padding-left: 440px;
+}
+div.sor.behuzas56 {
+  padding-left: 448px;
+}
+div.sor.behuzas57 {
+  padding-left: 456px;
+}
+div.sor.behuzas58 {
+  padding-left: 464px;
+}
+div.sor.behuzas59 {
+  padding-left: 472px;
+}
+div.sor.behuzas60 {
+  padding-left: 480px;
+}
+div.sor.behuzas61 {
+  padding-left: 488px;
+}
+div.sor.behuzas62 {
+  padding-left: 496px;
+}
+div.sor.behuzas63 {
+  padding-left: 504px;
+}
+div.sor.behuzas64 {
+  padding-left: 512px;
+}
+div.sor.behuzas65 {
+  padding-left: 520px;
+}
+div.sor.behuzas66 {
+  padding-left: 528px;
+}
+div.sor.behuzas67 {
+  padding-left: 536px;
+}
+div.sor.behuzas68 {
+  padding-left: 544px;
+}
+div.sor.behuzas69 {
+  padding-left: 552px;
+}
+div.sor.behuzas70 {
+  padding-left: 560px;
+}
+div.sor.behuzas71 {
+  padding-left: 568px;
+}
+div.sor.behuzas72 {
+  padding-left: 576px;
+}
+div.sor.behuzas73 {
+  padding-left: 584px;
+}
+div.sor.behuzas74 {
+  padding-left: 592px;
+}
+div.sor.behuzas75 {
+  padding-left: 600px;
+}
+div.sor.behuzas76 {
+  padding-left: 608px;
+}
+div.sor.behuzas77 {
+  padding-left: 616px;
+}
+div.sor.behuzas78 {
+  padding-left: 624px;
+}
+div.sor.behuzas79 {
+  padding-left: 632px;
+}
+div.sor.behuzas80 {
+  padding-left: 640px;
+}
+div.sor.behuzas81 {
+  padding-left: 648px;
+}
+div.sor.behuzas82 {
+  padding-left: 656px;
+}
+div.sor.behuzas83 {
+  padding-left: 664px;
+}
+div.sor.behuzas84 {
+  padding-left: 672px;
+}
+div.sor.behuzas85 {
+  padding-left: 680px;
+}
+div.sor.behuzas86 {
+  padding-left: 688px;
+}
+div.sor.behuzas87 {
+  padding-left: 696px;
+}
+div.sor.behuzas88 {
+  padding-left: 704px;
+}
+div.sor.behuzas89 {
+  padding-left: 712px;
+}
+div.sor.behuzas90 {
+  padding-left: 720px;
+}
+div.sor.behuzas91 {
+  padding-left: 728px;
+}
+div.sor.behuzas92 {
+  padding-left: 736px;
+}
+div.sor.behuzas93 {
+  padding-left: 744px;
+}
+div.sor.behuzas94 {
+  padding-left: 752px;
+}
+div.sor.behuzas95 {
+  padding-left: 760px;
+}
+div.sor.behuzas96 {
+  padding-left: 768px;
+}
+div.sor.behuzas97 {
+  padding-left: 776px;
+}
+div.sor.behuzas98 {
+  padding-left: 784px;
+}
+div.sor.behuzas99 {
+  padding-left: 792px;
+}
+div.sor.behuzas100 {
+  padding-left: 800px;
+}
+@namespace "http://www.w3.org/1999/xhtml";
+body {
+  line-height: 1.25;
+}
+div.szerzoseg > div.szerzo {
+  font-size: 130%;
+  font-weight: 700;
+  font-variant: small-caps;
+  margin-bottom: 1em;
+}
+div.szerzoseg > div.alnev {
+  font-weight: 700;
+  font-variant: small-caps;
+  font-size: 140%;
+  margin-top: 0.5em;
+}
+div.szerzoseg > div.konyvcim {
+  font-weight: 700;
+  font-variant: small-caps;
+  font-size: 160%;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+div.szerzoseg > div.alcim {
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 130%;
+  margin-bottom: 0.5em;
+}
+div.szerzoseg > div.copyright {
+  font-weight: 700;
+  font-variant: small-caps;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+div.cim {
+  font-weight: 700;
+  font-size: 130%;
+  margin-bottom: 1em;
+}
+body > div:not([class]) > div.cim {
+  font-weight: 700;
+  font-size: 145%;
+  margin-bottom: 1em;
+  font-style: italic;
+}
+body > div:not([class]) > div:not([class]) > div.cim {
+  font-weight: 700;
+  font-size: 140%;
+  margin-bottom: 1em;
+}
+body > div:not([class]) > div:not([class]) > div:not([class]) > div.cim {
+  font-weight: 700;
+  font-size: 135%;
+  margin-bottom: 1em;
+  font-style: italic;
+}
+body
+  > div:not([class])
+  > div:not([class])
+  > div:not([class])
+  > div:not([class])
+  > div.cim {
+  font-weight: 700;
+  font-size: 130%;
+  margin-bottom: 1em;
+  font-variant: small-caps;
+}
+body > div:not([class]) > div.versciklus > div.cim {
+  font-weight: 700;
+  font-size: 140%;
+  margin-bottom: 1em;
+}
+body > div:not([class]) > div.versciklus > div.versciklus > div.cim {
+  font-weight: 700;
+  font-size: 135%;
+  margin-bottom: 1em;
+  font-style: italic;
+}
+body
+  > div:not([class])
+  > div.versciklus
+  > div.versciklus
+  > div.versciklus
+  > div.cim {
+  font-weight: 700;
+  font-size: 130%;
+  margin-bottom: 1em;
+  font-variant: small-caps;
+}
+body > div.versciklus > div.cim {
+  font-weight: 700;
+  font-size: 145%;
+  margin-bottom: 1em;
+  font-style: italic;
+}
+body > div.versciklus > div.versciklus > div.cim {
+  font-weight: 700;
+  font-size: 140%;
+  margin-bottom: 1em;
+}
+body > div.versciklus > div.versciklus > div.versciklus > div.cim {
+  font-weight: 700;
+  font-size: 135%;
+  margin-bottom: 1em;
+  font-style: italic;
+}
+body
+  > div.versciklus
+  > div.versciklus
+  > div.versciklus
+  > div.versciklus
+  > div.cim {
+  font-weight: 700;
+  font-size: 130%;
+  margin-bottom: 1em;
+  font-variant: small-caps;
+}
+div.mu {
+  position: relative;
+}
+div.mu > div:not([class]) > div.cim {
+  font-weight: 700;
+  font-size: 110%;
+  margin-bottom: 1em;
+}
+div.vers > div:not([class]) > div.cim {
+  font-weight: 700;
+  font-size: 110%;
+  margin-bottom: 1em;
+}
+div:not([class]) > div:not([class]) > div.cim {
+  font-weight: 700;
+  font-size: 100%;
+  margin-bottom: 1em;
+}
+div:not([class]) > div:not([class]) > div:not([class]) > div.cim {
+  font-weight: 700;
+  font-size: 90%;
+  margin-bottom: 1em;
+}
+div.mu div.vers > div.cim {
+  font-size: 100%;
+  font-weight: 700;
+  margin-bottom: 1em;
+  font-variant: small-caps;
+}
+div.mu div.vers > div:not([class]) > div.cim {
+  font-size: 90%;
+  font-weight: 700;
+  margin-bottom: 1em;
+  font-variant: small-caps;
+}
+div.alcim {
+  font-style: italic;
+  font-size: 120%;
+  margin-bottom: 1em;
+}
+body > div:not([class]) > div.alcim {
+  font-style: italic;
+  font-size: 135%;
+  margin-bottom: 1em;
+}
+body > div:not([class]) > div:not([class]) > div.alcim {
+  font-style: italic;
+  font-size: 130%;
+  margin-bottom: 1em;
+}
+body > div:not([class]) > div:not([class]) > div:not([class]) > div.alcim {
+  font-style: italic;
+  font-size: 125%;
+  margin-bottom: 1em;
+}
+body > div.versciklus > div.alcim {
+  font-style: italic;
+  font-size: 135%;
+  margin-bottom: 1em;
+}
+body > div.versciklus > div.versciklus > div.alcim {
+  font-style: italic;
+  font-size: 130%;
+  margin-bottom: 1em;
+}
+body > div.versciklus > div.versciklus > div.versciklus > div.alcim {
+  font-style: italic;
+  font-size: 125%;
+  margin-bottom: 1em;
+}
+div.mu > div:not([class]) > div.alcim {
+  font-style: italic;
+  font-size: 100%;
+  margin-bottom: 1em;
+}
+div.idezet {
+  margin-right: 2em;
+  margin-left: 2em;
+}
+div.idezet:not(.vers):not(:first-child) {
+  margin-top: 1em;
+}
+div.idezet:not(.vers):not(:last-child) {
+  margin-bottom: 1em;
+}
+div.vers > div:not([class]) > div.alcim {
+  font-style: italic;
+  font-size: 100%;
+  margin-bottom: 1em;
+}
+div:not([class]) > div:not([class]) > div.alcim {
+  font-style: italic;
+  font-size: 90%;
+  margin-bottom: 1em;
+}
+div:not([class]) > div:not([class]) > div:not([class]) > div.alcim {
+  font-style: italic;
+  font-size: 80%;
+  margin-bottom: 1em;
+}
+div.mu div.vers > div.alcim {
+  font-size: 90%;
+  font-style: italic;
+  margin-bottom: 1em;
+}
+div.mu div.vers > div:not([class]) > div.alcim {
+  font-size: 80%;
+  font-style: italic;
+  margin-bottom: 1em;
+}
+div.szereplolista > div.cim {
+  font-weight: 700;
+  font-size: 100%;
+  margin-bottom: 1em;
+}
+div.szereplolista > div.alcim {
+  font-size: 90%;
+  font-style: italic;
+  margin-bottom: 1em;
+}
+div.alcim em {
+  font-style: normal;
+}
+div.vers {
+  margin-left: 4em;
+  max-width: 75%;
+}
+div.kethasabos div.vers {
+  margin-left: 0;
+  max-width: 100%;
+}
+div.vers.hosszusoros {
+  margin-left: 0;
+  max-width: 100%;
+}
+div.sor,
+div.vers.hosszusoros div[class*="sor behuzas"] {
+  text-indent: -18%;
+  margin-left: 18%;
+  text-align: justify;
+  text-align-last: auto;
+}
+div.sor.jobbra,
+div.sor.kozepre,
+div[class^="balmargo"] > div.sor {
+  text-indent: 0;
+  margin-left: 0;
+}
+div.sor.kozepre {
+  text-align: center;
+}
+div.mu,
+div.vers,
+div:not([class]) {
+  margin-bottom: 2em;
+  margin-top: 2em;
+}
+div.versciklus {
+  margin-bottom: 4em;
+  margin-top: 2em;
+}
+div.keretezett {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+img {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+img.inline {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.kep {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+div.kep > div.cim {
+  font-weight: bolder;
+  font-size: 90%;
+  margin-bottom: 1em;
+  text-align: center;
+}
+div.kep > div.kepalairas {
+  font-size: 80%;
+}
+table {
+  border: none;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  caption-side: top;
+}
+caption {
+  margin-top: 1em;
+  text-align: center;
+}
+td {
+  vertical-align: baseline;
+}
+div.szereplolista {
+  border: none;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+div.csoport-nev,
+div.nev,
+div.szerep {
+  padding-left: 1em;
+}
+ol,
+ul {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  text-align: justify;
+}
+li {
+  margin-bottom: 0.5em;
+}
+li p:first-child {
+  text-indent: 0;
+}
+div.motto {
+  float: right;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  font-size: 95%;
+}
+div.motto + * {
+  clear: both;
+}
+div.motto > div.vers {
+  margin-left: 0;
+  margin-bottom: 0;
+  margin-top: 0;
+  max-width: none;
+}
+div.motto .versszak .sor {
+  margin-left: 0;
+  text-indent: 0;
+}
+div.ajanlas {
+  float: right;
+  max-width: 60%;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  font-size: 95%;
+}
+div.ajanlas + * {
+  clear: both;
+}
+div.ajanlas > div.vers {
+  margin-left: 0;
+  margin-bottom: 0;
+  margin-top: 0;
+  max-width: none;
+}
+div.ajanlas > p,
+div.motto > p {
+  text-indent: 0;
+}
+div.keltezes {
+  margin-left: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-style: italic;
+}
+div.keltezes em {
+  font-style: normal;
+}
+div.beszelo {
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 0.25em;
+}
+div.beszed {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+p {
+  text-indent: 1em;
+  text-align: justify;
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+.keretezett > p:first-child {
+  margin-top: 0;
+}
+.labjegyzet,
+.parhuzamos-bekezdes,
+.parhuzamos-bekezdes-bal,
+.parhuzamos-bekezdes-jobb,
+.parhuzamosbekezdes,
+.szeljegyzet,
+.szeljegyzet-bal,
+.szeljegyzet-jobb,
+.vegjegyzet {
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  letter-spacing: normal;
+  text-indent: 0;
+  margin-left: 0;
+  margin-right: 0;
+  text-align: justify;
+}
+.parhuzamos-bekezdes,
+.parhuzamos-bekezdes-jobb,
+.parhuzamosbekezdes,
+.szeljegyzet,
+.szeljegyzet-jobb {
+  position: absolute;
+  right: 0;
+  max-width: 10%;
+  padding: 0;
+}
+.parhuzamos-bekezdes-bal,
+.szeljegyzet-bal {
+  position: absolute;
+  left: 0;
+  max-width: 10%;
+  padding: 0;
+}
+.parhuzamos-bekezdes div.vers,
+.parhuzamos-bekezdes-bal div.vers,
+.parhuzamos-bekezdes-jobb div.vers,
+.parhuzamosbekezdes div.vers,
+.szeljegyzet div.vers,
+.szeljegyzet-bal div.vers,
+.szeljegyzet-jobb div.vers {
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-top: 0;
+  max-width: none;
+  text-align: left;
+}
+.labjegyzet div.vers,
+.vegjegyzet div.vers {
+  margin-left: 0;
+  margin-right: 0;
+  text-align: left;
+}
+.labjegyzet div.cim,
+.parhuzamos-bekezdes div.cim,
+.parhuzamos-bekezdes-bal div.cim,
+.parhuzamos-bekezdes-jobb div.cim,
+.parhuzamosbekezdes div.cim,
+.szeljegyzet div.cim,
+.szeljegyzet-bal div.cim,
+.szeljegyzet-jobb div.cim,
+.vegjegyzet div.cim {
+  font-weight: bolder;
+  font-size: 100%;
+}
+.labjegyzet div.alcim,
+.parhuzamos-bekezdes div.alcim,
+.parhuzamos-bekezdes-bal div.alcim,
+.parhuzamos-bekezdes-jobb div.alcim,
+.parhuzamosbekezdes div.alcim,
+.szeljegyzet div.alcim,
+.szeljegyzet-bal div.alcim,
+.szeljegyzet-jobb div.alcim,
+.vegjegyzet div.alcim {
+  font-size: 90%;
+}
+html#RS\:monocle div.motto {
+  max-width: 60% !important;
+}
+html#RS\:monocle div.motto > div.vers {
+  max-width: none !important;
+}
+html#RS\:monocle .parhuzamos-bekezdes,
+html#RS\:monocle .parhuzamos-bekezdes-jobb,
+html#RS\:monocle .parhuzamosbekezdes,
+html#RS\:monocle .szeljegyzet,
+html#RS\:monocle .szeljegyzet-jobb {
+  max-width: 10% !important;
+}
+html#RS\:monocle .parhuzamos-bekezdes-bal,
+html#RS\:monocle .szeljegyzet-bal {
+  max-width: 10% !important;
+}
+html#RS\:monocle div.vers {
+  max-width: 75% !important;
+}
+html#RS\:monocle div.kethasabos div.vers {
+  max-width: 100% !important;
+}
+html#RS\:monocle div.vers.hosszusoros {
+  max-width: 100% !important;
+}
+html#RS\:monocle div.motto > div.vers {
+  max-width: none !important;
+}
+html#RS\:monocle div.ajanlas {
+  max-width: 60% !important;
+}
+html#RS\:monocle div.ajanlas > div.vers {
+  max-width: none !important;
+}
+html#RS\:monocle .parhuzamos-bekezdes div.vers,
+html#RS\:monocle .parhuzamos-bekezdes-bal div.vers,
+html#RS\:monocle .parhuzamos-bekezdes-jobb div.vers,
+html#RS\:monocle .parhuzamosbekezdes div.vers,
+html#RS\:monocle .szeljegyzet div.vers,
+html#RS\:monocle .szeljegyzet-bal div.vers,
+html#RS\:monocle .szeljegyzet-jobb div.vers {
+  max-width: none !important;
+}
+@media print {
+  html#RS\:monocle .parhuzamos-bekezdes,
+  html#RS\:monocle .parhuzamos-bekezdes-bal,
+  html#RS\:monocle .parhuzamos-bekezdes-jobb,
+  html#RS\:monocle .parhuzamosbekezdes,
+  html#RS\:monocle .szeljegyzet,
+  html#RS\:monocle .szeljegyzet-bal,
+  html#RS\:monocle .szeljegyzet-jobb {
+    max-width: none !important;
+  }
+}
+.bookmarked,
+.note-icon {
+  color: #808384;
+}
+.icon-holder.left .icon-wrapper .counter,
+.icon-holder.right .icon-wrapper .counter {
+  color: #fff;
+  background-color: #808384;
+  top: 4px;
+  left: 5px;
+  border-radius: 0;
+  box-shadow: none;
+}
+html body {
+  font-family: "Basis Grotesque Pro Regular";
+  font-size: 19px;
+}
+html body .oldaltores {
+  display: none;
+}
+html body .szerzoseg {
+  font-weight: 700;
+}
+html body .szerzoseg .szerzo {
+  line-height: 44px;
+}
+html body .szerzoseg .konyvcim {
+  margin-top: 12px;
+}
+html body .szerzoseg .copyright {
+  margin-top: 31px;
+  padding-bottom: 26px;
+  line-height: 30px;
+  text-transform: uppercase;
+}
+html body .szerzoseg .copyright a {
+  color: #1fa678;
+  text-transform: none;
+}
+html body .alcim:last-child,
+html body .cim:last-child {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+html body .cim {
+  font-weight: 700;
+  padding-bottom: 20px;
+}
+html body .alcim {
+  font-style: italic;
+}
+html body .versciklus:first-child {
+  margin-top: 0;
+}
+html body .versciklus:last-child,
+html body .versciklus:nth-last-child(3) {
+  margin-bottom: 0;
+}
+html body div.mu:first-child,
+html body div.vers:first-child,
+html body div:not([class]):first-child {
+  margin-top: 0;
+}
+html body div.mu:last-child,
+html body div.mu:nth-last-child(3),
+html body div.vers:last-child,
+html body div.vers:nth-last-child(3),
+html body div:not([class]):last-child,
+html body div:not([class]):nth-last-child(3) {
+  margin-bottom: 0;
+}
+html body div.versszak:last-child {
+  margin-bottom: 0;
+}
+html body #quote-marker {
+  position: absolute;
+  display: inline-block;
+}
+html body #quote-marker .fa-facebook {
+  background-color: #446f83;
+  color: #fff;
+}
+@media screen and (min-width: 900px) {
+  html body > div:not(.icon-holder) {
+    padding: 0 55px;
+  }
+  html body > div:not(.icon-holder) .oldaltores {
+    margin-left: -55px;
+  }
+  html body .parhuzamos-bekezdes,
+  html body .parhuzamos-bekezdes-jobb,
+  html body .parhuzamosbekezdes,
+  html body .szeljegyzet,
+  html body .szeljegyzet-jobb {
+    right: 55px;
+  }
+  html body .parhuzamos-bekezdes-bal,
+  html body .szeljegyzet-bal {
+    left: 55px;
+  }
+}
+/* @font-face {
+  font-family: "Basis Grotesque Pro";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Basis Grotesque Pro"),
+    url(/fonts/BasisGrotesquePro-Regular.woff) format("woff");
+}
+@font-face {
+  font-family: "Basis Grotesque Pro Bold";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Basis Grotesque Pro Bold"),
+    url(/fonts/BasisGrotesquePro-Bold.woff) format("woff");
+}
+@font-face {
+  font-family: "Basis Grotesque Pro Light";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Basis Grotesque Pro Light"),
+    url(/fonts/BasisGrotesquePro-Light.woff) format("woff");
+} */

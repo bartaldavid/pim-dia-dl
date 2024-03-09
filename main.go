@@ -3,15 +3,19 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"os"
+	"strings"
+
+	"github.com/go-shiori/go-epub"
 )
 
 const rootUrl = "https://reader.dia.hu"
 
 func main() {
-	// URL of the HTML file you want to fetch
-	const url = "https://reader.dia.hu/document/Csengey_Denes-Mezitlabas_szabadsag-36045"
+	url := os.Args[1]
 
-	// Fetch HTML content
+	urlParts := strings.Split(url, "/")
+
 	resp, err := http.Get(url)
 
 	if err != nil {
@@ -32,20 +36,49 @@ func main() {
 		return
 	}
 
+	e, err := epub.NewEpub(initSettings.MetaData.Title)
+
+	if err != nil {
+		fmt.Println("Error creating new EPUB:", err)
+		return
+	}
+
+	e.SetAuthor(initSettings.MetaData.Author)
+
+	// served as static css
+	cssPath, err := e.AddCSS("monocle.extension.css", "")
+
+	if err != nil {
+		fmt.Println("Error adding CSS:", err)
+		return
+	}
+
 	for _, component := range initSettings.View.Components {
-		_, err = getChunk(component, &cookie)
+		chunk, chunkTitle, err := getChunk(component, &cookie)
 		if err != nil {
 			fmt.Println("Error getting chunk:", err)
 			return
 		}
+		_, err = e.AddSection(chunk, chunkTitle, "", cssPath)
+		if err != nil {
+			fmt.Println("Error adding section:", err)
+			return
+		}
 	}
 
-	metadata, err := getMetadata(initSettings.EpubID)
+	// FIXME Do we need this?
+	// metadata, err := getMetadata(initSettings.EpubID)
+	// if err != nil {
+	// 	fmt.Println("Error getting metadata:", err)
+	// 	return
+	// }
+
+	// fmt.Println(metadata.MetaData.Author, metadata.MetaData.BookTitle)
+
+	err = e.Write("temp/" + urlParts[len(urlParts)-1] + ".epub")
 	if err != nil {
-		fmt.Println("Error getting metadata:", err)
+		fmt.Println("Error writing EPUB:", err)
 		return
 	}
-
-	fmt.Println(metadata.MetaData.Author, metadata.MetaData.BookTitle)
 
 }

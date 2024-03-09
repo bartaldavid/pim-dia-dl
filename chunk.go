@@ -2,25 +2,25 @@ package main
 
 import (
 	"fmt"
-	"io"
 	"net/http"
 	"net/url"
-	"os"
-	"strings"
+
+	"github.com/PuerkitoBio/goquery"
 )
 
-func getChunk(path string, cookie *http.Cookie) (string, error) {
+// TODO make this a struct
+func getChunk(path string, cookie *http.Cookie) (string, string, error) {
 	urlString, err := url.JoinPath(rootUrl, path)
 	if err != nil {
 		fmt.Println("Error joining URL:", err)
-		return "", err
+		return "", "", err
 	}
 
 	// Create a new request
 	req, err := http.NewRequest("GET", urlString, nil)
 	if err != nil {
 		fmt.Println("Error creating request:", err)
-		return "", err
+		return "", "", err
 	}
 
 	// Set the cookie to the request
@@ -30,30 +30,40 @@ func getChunk(path string, cookie *http.Cookie) (string, error) {
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
 		fmt.Println("Error sending request:", err)
-		return "", err
+		return "", "", err
 	}
 
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
 		fmt.Println("Error fetching URL:", resp.Status)
-		return "", err
+		return "", "", err
 	}
 
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		fmt.Println("Error reading response body:", err)
-		return "", err
-	}
-
-	pathSegments := strings.Split(path, "/")
-
-	err = os.WriteFile(pathSegments[len(pathSegments)-1], body, 0644)
+	// body, err := io.ReadAll(resp.Body)
+	// if err != nil {
+	// 	fmt.Println("Error reading response body:", err)
+	// 	return "", err
+	// }
 
 	if err != nil {
-		fmt.Println("Error writing file:", err)
-		return "", err
+		fmt.Println("Error getting HTML body:", err)
+		return "", "", err
 	}
 
-	return string(body), nil
+	doc, err := goquery.NewDocumentFromReader(resp.Body)
+
+	if err != nil {
+		return "", "", err
+	}
+
+	body, err := doc.Find("body").Html()
+
+	if err != nil {
+		return "", "", err
+	}
+
+	chunkTitle := doc.Find(".cim").First().Text()
+
+	return string(body), chunkTitle, nil
 }
