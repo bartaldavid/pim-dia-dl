@@ -20,6 +20,10 @@ func main() {
 		url := r.URL.Query().Get("url")
 		urlParts := strings.Split(url, "/")
 
+		if url == "" {
+			http.Redirect(w, r, "/", http.StatusSeeOther)
+		}
+
 		w.Header().Set("Content-Disposition", fmt.Sprintf(`attachment; filename="%s"`, urlParts[len(urlParts)-1]+".epub"))
 
 		err := diaEpub.UrlToEpub(url, w)
