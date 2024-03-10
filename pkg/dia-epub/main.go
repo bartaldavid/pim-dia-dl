@@ -68,12 +68,12 @@ func UrlToEpub(url string) (EpubResult, error) {
 	}
 
 	for _, component := range initSettings.View.Components {
-		chunk, chunkTitle, err := getChunk(component, &cookie)
+		chunk, err := getChunk(component, &cookie)
 		if err != nil {
 			fmt.Println("Error getting chunk:", err)
 			return EpubResult{}, err
 		}
-		_, err = e.AddSection(chunk, chunkTitle, "", cssPath)
+		_, err = e.AddSection(chunk.Body, chunk.Title, "", cssPath)
 		if err != nil {
 			fmt.Println("Error adding section:", err)
 			return EpubResult{}, err

@@ -8,19 +8,23 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
-// TODO make this a struct
-func getChunk(path string, cookie *http.Cookie) (string, string, error) {
+type Chunk struct {
+	Body  string
+	Title string
+}
+
+func getChunk(path string, cookie *http.Cookie) (Chunk, error) {
 	urlString, err := url.JoinPath(rootUrl, path)
 	if err != nil {
 		fmt.Println("Error joining URL:", err)
-		return "", "", err
+		return Chunk{}, err
 	}
 
 	// Create a new request
 	req, err := http.NewRequest("GET", urlString, nil)
 	if err != nil {
 		fmt.Println("Error creating request:", err)
-		return "", "", err
+		return Chunk{}, err
 	}
 
 	// Set the cookie to the request
@@ -30,29 +34,29 @@ func getChunk(path string, cookie *http.Cookie) (string, string, error) {
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
 		fmt.Println("Error sending request:", err)
-		return "", "", err
+		return Chunk{}, err
 	}
 
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
 		fmt.Println("Error fetching URL:", resp.Status)
-		return "", "", err
+		return Chunk{}, err
 	}
 
 	doc, err := goquery.NewDocumentFromReader(resp.Body)
 
 	if err != nil {
-		return "", "", err
+		return Chunk{}, err
 	}
 
 	body, err := doc.Find("body").Html()
 
 	if err != nil {
-		return "", "", err
+		return Chunk{}, err
 	}
 
 	chunkTitle := doc.Find(".cim").First().Text()
 
-	return string(body), chunkTitle, nil
+	return Chunk{Body: body, Title: chunkTitle}, nil
 }
