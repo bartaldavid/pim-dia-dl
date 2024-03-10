@@ -58,8 +58,8 @@ func UrlToEpub(url string) (EpubResult, error) {
 	}
 
 	e.SetAuthor(initSettings.MetaData.Author)
+	e.SetLang("hu")
 
-	// served as static css
 	cssPath, err := e.AddCSS("https://reader.dia.hu/online-reader/resources/epub-reader/extension/monocle.extension.css", "")
 
 	if err != nil {
