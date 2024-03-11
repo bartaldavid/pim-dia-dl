@@ -128,15 +128,19 @@
       const input = document.querySelector("input");
       const errorMessageDiv = document.querySelector("#error-message");
 
-      function resetState() {
+      /**
+       * @param {number} timeoutId
+       */
+      function resetState(timeoutId) {
         loadingIndicator.setAttribute("style", "display: none");
         submitButton.removeAttribute("disabled");
+        clearTimeout(timeoutId);
       }
 
       form.addEventListener("submit", async (e) => {
         e.preventDefault();
         if (!input.checkValidity() || input.value === "") return;
-        setTimeout(() => {
+        const timeoutId = setTimeout(() => {
           loadingIndicator.setAttribute("style", "display: block");
         }, 500);
         submitButton.setAttribute("disabled", "true");
@@ -148,18 +152,18 @@
           );
         } catch (error) {
           errorMessageDiv.innerHTML = `<p>Hiba történt a letöltés közben: ${error.message}</p>`;
-          resetState();
+          resetState(timeoutId);
           return;
         }
         if (!res.ok) {
           errorMessageDiv.innerHTML = `<p>Hiba történt a letöltés közben: ${res.statusText}</p>`;
-          resetState();
+          resetState(timeoutId);
           return;
         }
         const blob = await res.blob();
         if (!blob) {
           errorMessageDiv.innerHTML = `<p>Hiba történt a letöltés közben: Nem sikerült letölteni a fájlt.</p>`;
-          resetState();
+          resetState(timeoutId);
           return;
         }
         const filename = res.headers
@@ -167,7 +171,7 @@
           .split("filename=")[1];
         const file = window.URL.createObjectURL(blob);
         window.location.assign(file);
-        resetState();
+        resetState(timeoutId);
         input.value = "";
       });
     </script>

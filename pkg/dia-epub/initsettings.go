@@ -7,18 +7,20 @@ import (
 	"net/http"
 )
 
+type Contents struct {
+	Src      string      `json:"src"`
+	Title    string      `json:"title"`
+	Children *[]Contents `json:"children"`
+}
+
 type InitSettingsResponse struct {
 	EpubID                               string `json:"epubId"`
 	ProtectedContent                     bool   `json:"protectedContent"`
 	OnlineAccessExpirationTime           int    `json:"onlineAccessExpirationTime"`
 	OnlineAccessExpirationTimeExtendTime int    `json:"onlineAccessExpirationTimeExtendTime"`
 	View                                 struct {
-		Components []string `json:"components"`
-		Contents   []struct {
-			Src      string `json:"src"`
-			Title    string `json:"title"`
-			Children any    `json:"children"`
-		} `json:"contents"`
+		Components []string   `json:"components"`
+		Contents   []Contents `json:"contents"`
 	} `json:"view"`
 	MetaData struct {
 		Author string `json:"author"`

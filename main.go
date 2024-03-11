@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 	"net/url"
 	"os"
@@ -63,5 +64,5 @@ func main() {
 		port = "8080"
 	}
 
-	http.ListenAndServe(":"+port, mux)
+	log.Fatal(http.ListenAndServe(":"+port, mux))
 }

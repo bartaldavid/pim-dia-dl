@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/go-shiori/go-epub"
+	"golang.org/x/sync/errgroup"
 )
 
 const rootUrl = "https://reader.dia.hu"
@@ -13,6 +14,23 @@ const rootUrl = "https://reader.dia.hu"
 type EpubResult struct {
 	Epub     *epub.Epub
 	FileName string
+}
+
+func addChildrenRecursively(e *epub.Epub, parentPath string, children *[]Contents, chunks map[string]Chunk, cssPath string) error {
+	if children == nil {
+		return nil
+	}
+	for _, subContent := range *children {
+		sectionPath, err := e.AddSubSection(parentPath, chunks[subContent.Src].Body, subContent.Title, "", cssPath)
+		if err != nil {
+			fmt.Println("Error adding subsection:", err)
+			return err
+		}
+		if subContent.Children != nil {
+			addChildrenRecursively(e, sectionPath, subContent.Children, chunks, cssPath)
+		}
+	}
+	return nil
 }
 
 func UrlToEpub(url string) (EpubResult, error) {
@@ -67,15 +85,46 @@ func UrlToEpub(url string) (EpubResult, error) {
 		return EpubResult{}, err
 	}
 
+	chunks := make(map[string]Chunk)
+	g := new(errgroup.Group)
+
 	for _, component := range initSettings.View.Components {
-		chunk, err := getChunk(component, &cookie)
-		if err != nil {
-			fmt.Println("Error getting chunk:", err)
-			return EpubResult{}, err
-		}
-		_, err = e.AddSection(chunk.Body, chunk.Title, "", cssPath)
+		g.Go(func() error {
+			chunk, err := getChunk(component, &cookie)
+			if err != nil {
+				fmt.Println("Error getting chunk:", err)
+				return err
+			}
+			chunks[component] = chunk
+			return nil
+		})
+
+		// chunk, err := getChunk(component, &cookie)
+		// if err != nil {
+		// 	fmt.Println("Error getting chunk:", err)
+		// 	return EpubResult{}, err
+		// }
+		// _, err = e.AddSection(chunk.Body, chunk.Title, "", cssPath)
+		// if err != nil {
+		// 	fmt.Println("Error adding section:", err)
+		// 	return EpubResult{}, err
+		// }
+	}
+
+	if err := g.Wait(); err != nil {
+		fmt.Println("Error getting chunks:", err)
+		return EpubResult{}, err
+	}
+
+	for _, content := range initSettings.View.Contents {
+		parent, err := e.AddSection(chunks[content.Src].Body, content.Title, "", cssPath)
 		if err != nil {
 			fmt.Println("Error adding section:", err)
+			return EpubResult{}, err
+		}
+		err = addChildrenRecursively(e, parent, content.Children, chunks, cssPath)
+		if err != nil {
+			fmt.Println("Error adding children:", err)
 			return EpubResult{}, err
 		}
 	}
