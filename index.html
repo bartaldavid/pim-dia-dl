@@ -144,7 +144,7 @@
         let res;
         try {
           res = await fetch(
-            `/epub?${new URLSearchParams(new FormData(form)).toString()}a`
+            `/epub?${new URLSearchParams(new FormData(form)).toString()}`
           );
         } catch (error) {
           errorMessageDiv.innerHTML = `<p>Hiba történt a letöltés közben: ${error.message}</p>`;
