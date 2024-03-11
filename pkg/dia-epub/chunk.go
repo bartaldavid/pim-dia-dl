@@ -1,7 +1,7 @@
 package diaEpub
 
 import (
-	"fmt"
+	"log"
 	"net/http"
 	"net/url"
 
@@ -16,14 +16,14 @@ type Chunk struct {
 func getChunk(path string, cookie *http.Cookie) (Chunk, error) {
 	urlString, err := url.JoinPath(rootUrl, path)
 	if err != nil {
-		fmt.Println("Error joining URL:", err)
+		log.Println("Error joining URL:", err)
 		return Chunk{}, err
 	}
 
 	// Create a new request
 	req, err := http.NewRequest("GET", urlString, nil)
 	if err != nil {
-		fmt.Println("Error creating request:", err)
+		log.Println("Error creating request:", err)
 		return Chunk{}, err
 	}
 
@@ -33,14 +33,14 @@ func getChunk(path string, cookie *http.Cookie) (Chunk, error) {
 	// Send the request
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
-		fmt.Println("Error sending request:", err)
+		log.Println("Error sending request:", err)
 		return Chunk{}, err
 	}
 
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		fmt.Println("Error fetching URL:", resp.Status)
+		log.Println("Error fetching URL:", resp.Status)
 		return Chunk{}, err
 	}
 
