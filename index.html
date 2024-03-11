@@ -118,6 +118,7 @@
           >
           <span id="loading-indicator">Rajta vagyunk az ügyön...</span>
         </div>
+        <div id="error-message"></div>
       </form>
     </main>
     <script>
@@ -125,23 +126,48 @@
       const loadingIndicator = document.querySelector("#loading-indicator");
       const submitButton = document.querySelector("button[type=submit]");
       const input = document.querySelector("input");
+      const errorMessageDiv = document.querySelector("#error-message");
+
+      function resetState() {
+        loadingIndicator.setAttribute("style", "display: none");
+        submitButton.removeAttribute("disabled");
+      }
+
       form.addEventListener("submit", async (e) => {
         e.preventDefault();
+        if (!input.checkValidity() || input.value === "") return;
         setTimeout(() => {
           loadingIndicator.setAttribute("style", "display: block");
         }, 500);
         submitButton.setAttribute("disabled", "true");
-        const res = await fetch(
-          `/epub?${new URLSearchParams(new FormData(form)).toString()}`
-        );
+        /** @type {Response | undefined} */
+        let res;
+        try {
+          res = await fetch(
+            `/epub?${new URLSearchParams(new FormData(form)).toString()}a`
+          );
+        } catch (error) {
+          errorMessageDiv.innerHTML = `<p>Hiba történt a letöltés közben: ${error.message}</p>`;
+          resetState();
+          return;
+        }
+        if (!res.ok) {
+          errorMessageDiv.innerHTML = `<p>Hiba történt a letöltés közben: ${res.statusText}</p>`;
+          resetState();
+          return;
+        }
         const blob = await res.blob();
+        if (!blob) {
+          errorMessageDiv.innerHTML = `<p>Hiba történt a letöltés közben: Nem sikerült letölteni a fájlt.</p>`;
+          resetState();
+          return;
+        }
         const filename = res.headers
           .get("Content-Disposition")
           .split("filename=")[1];
         const file = window.URL.createObjectURL(blob);
         window.location.assign(file);
-        loadingIndicator.setAttribute("style", "display: none");
-        submitButton.removeAttribute("disabled");
+        resetState();
         input.value = "";
       });
     </script>
