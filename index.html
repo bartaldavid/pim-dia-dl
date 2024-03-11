@@ -75,6 +75,9 @@
           text-decoration: underline;
         }
       }
+      #loading-indicator {
+        display: none;
+      }
     </style>
   </head>
   <body>
@@ -105,8 +108,29 @@
           <a href="https://opac.dia.hu/" id="search-link"
             >Keresés a DIA katalógusában</a
           >
+          <span id="loading-indicator">Rajta vagyunk az ügyön...</span>
         </div>
       </form>
     </main>
+    <script>
+      const form = document.querySelector("form");
+      const loadingIndicator = document.querySelector("#loading-indicator");
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        setTimeout(() => {
+          loadingIndicator.setAttribute("style", "display: block");
+        }, 500);
+        const res = await fetch(
+          `/epub?${new URLSearchParams(new FormData(form)).toString()}`
+        );
+        const blob = await res.blob();
+        const filename = res.headers
+          .get("Content-Disposition")
+          .split("filename=")[1];
+        const file = window.URL.createObjectURL(blob);
+        window.location.assign(file);
+        loadingIndicator.setAttribute("style", "display: none");
+      });
+    </script>
   </body>
 </html>
