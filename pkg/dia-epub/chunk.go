@@ -1,6 +1,7 @@
 package diaEpub
 
 import (
+	"context"
 	"log"
 	"net/http"
 	"net/url"
@@ -13,7 +14,7 @@ type Chunk struct {
 	Title string
 }
 
-func getChunk(path string, cookie *http.Cookie) (Chunk, error) {
+func downloadChunkFromUrl(ctx context.Context, path string, cookie *http.Cookie) (Chunk, error) {
 	urlString, err := url.JoinPath(rootUrl, path)
 	if err != nil {
 		log.Println("Error joining URL:", err)
@@ -21,7 +22,7 @@ func getChunk(path string, cookie *http.Cookie) (Chunk, error) {
 	}
 
 	// Create a new request
-	req, err := http.NewRequest("GET", urlString, nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", urlString, nil)
 	if err != nil {
 		log.Println("Error creating request:", err)
 		return Chunk{}, err

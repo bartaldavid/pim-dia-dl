@@ -1,6 +1,7 @@
 package diaEpub
 
 import (
+	"context"
 	"fmt"
 	"net/http"
 	"strings"
@@ -33,35 +34,38 @@ func addChildrenRecursively(e *epub.Epub, parentPath string, children *[]Content
 	return nil
 }
 
-func UrlToEpub(url string) (EpubResult, error) {
+func DownloadAndBuildEpub(ctx context.Context, url string) (EpubResult, error) {
 	// urlParts := strings.Split(url, "/")
-
-	resp, err := http.Get(url)
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
 
 	if err != nil {
-		fmt.Println("Error fetching URL:", err)
+		return EpubResult{}, fmt.Errorf("error creating request: %w", err)
+	}
+
+	resp, err := http.DefaultClient.Do(req)
+
+	if err != nil {
+		fmt.Println("Error processing request:", err)
 		return EpubResult{}, err
 	}
 
 	if resp.StatusCode != http.StatusOK {
-		fmt.Println("Error fetching URL:", resp.Status)
-		return EpubResult{}, fmt.Errorf("error fetching URL (%s): %s", url, resp.Status)
+		return EpubResult{}, fmt.Errorf("error in response from url (%s): %s", url, resp.Status)
 	}
+	defer resp.Body.Close()
 
 	token := resp.Request.URL.Query().Get("token")
 
 	if token == "" {
-		fmt.Println("No token found")
-		return EpubResult{}, fmt.Errorf("no token found")
+		return EpubResult{}, fmt.Errorf("no token found in response")
 	}
 
+	// TODO do this in a nicer way
 	urlParts := strings.Split(url, "/")
-
-	defer resp.Body.Close()
 
 	cookie := http.Cookie{Name: "token", Value: token}
 
-	initSettings, err := getInitSettings(&cookie)
+	initSettings, err := getInitSettings(ctx, &cookie)
 
 	if err != nil {
 		fmt.Println("Error getting init settings:", err)
@@ -76,6 +80,7 @@ func UrlToEpub(url string) (EpubResult, error) {
 	}
 
 	e.SetAuthor(initSettings.MetaData.Author)
+
 	e.SetLang("hu")
 
 	cssPath, err := e.AddCSS("https://reader.dia.hu/online-reader/resources/epub-reader/extension/monocle.extension.css", "")
@@ -90,7 +95,7 @@ func UrlToEpub(url string) (EpubResult, error) {
 
 	for _, component := range initSettings.View.Components {
 		g.Go(func() error {
-			chunk, err := getChunk(component, &cookie)
+			chunk, err := downloadChunkFromUrl(ctx, component, &cookie)
 			if err != nil {
 				fmt.Println("Error getting chunk:", err)
 				return err

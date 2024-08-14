@@ -19,6 +19,7 @@ func main() {
 
 	mux.HandleFunc("/epub", func(w http.ResponseWriter, r *http.Request) {
 		urlQuery := r.URL.Query().Get("url")
+		ctx := r.Context()
 
 		if urlQuery == "" {
 			http.Redirect(w, r, "/", http.StatusSeeOther)
@@ -38,7 +39,7 @@ func main() {
 			return
 		}
 
-		epub, err := diaEpub.UrlToEpub(urlQuery)
+		epub, err := diaEpub.DownloadAndBuildEpub(ctx, urlQuery)
 
 		if err != nil {
 			http.Error(w, "Error creating EPUB - "+err.Error(), http.StatusInternalServerError)

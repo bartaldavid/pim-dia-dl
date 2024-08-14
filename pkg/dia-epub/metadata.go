@@ -1,6 +1,7 @@
 package diaEpub
 
 import (
+	"context"
 	"encoding/json"
 	"io"
 	"net/http"
@@ -31,7 +32,7 @@ type MetaData struct {
 
 const metaDataPath = "/rest/epub-reader/metadata"
 
-func getMetadata(epubId string) (MetaData, error) {
+func getMetadata(ctx context.Context, epubId string) (MetaData, error) {
 	urlString, err := url.JoinPath(rootUrl, metaDataPath)
 
 	if err != nil {
@@ -44,8 +45,11 @@ func getMetadata(epubId string) (MetaData, error) {
 	q.Set("epubId", epubId)
 	url.RawQuery = q.Encode()
 
-	// Send the request
-	resp, err := http.Get(url.String())
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url.String(), nil)
+	if err != nil {
+		return MetaData{}, err
+	}
+	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
 		return MetaData{}, err
 	}

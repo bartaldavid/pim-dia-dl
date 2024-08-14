@@ -1,6 +1,7 @@
 package diaEpub
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -30,12 +31,11 @@ type InitSettingsResponse struct {
 	FulltextFields []string `json:"fulltextFields"`
 }
 
-const chunkListUrl = "https://reader.dia.hu/rest/epub-reader/init-setting/"
+const initSettingsUrl = "https://reader.dia.hu/rest/epub-reader/init-setting/"
 
-func getInitSettings(cookie *http.Cookie) (InitSettingsResponse, error) {
+func getInitSettings(ctx context.Context, cookie *http.Cookie) (InitSettingsResponse, error) {
 
-	// Create a new request
-	req, err := http.NewRequest("GET", chunkListUrl, nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", initSettingsUrl, nil)
 	if err != nil {
 		fmt.Println("Error creating request:", err)
 		return InitSettingsResponse{}, err
